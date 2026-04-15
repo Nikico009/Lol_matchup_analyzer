@@ -3,7 +3,7 @@ import json
 import os
 import sys
 from PySide6.QtWidgets import QApplication
-from gui import MainWindow
+from gui.main_window import MainWindow
 
 
 REGION = "americas"
@@ -16,7 +16,7 @@ CONFIG_FILE = "config.json"
 
 def get_api_key():
     if not os.path.exists("riot_key.txt"):
-        print("❌ Falta riot_key.txt con tu API key")
+        print("Falta riot_key.txt con tu API key")
         exit()
 
     with open("riot_key.txt", "r") as f:
@@ -136,7 +136,7 @@ def save_config(config):
 
 
 # =========================
-# TEST (CLI)
+# TEST (CLI) - NO TOCAR
 # =========================
 
 def main_prueba():
@@ -183,30 +183,15 @@ def main_prueba():
 
 
 # =========================
-# GUI CALLBACKS
-# =========================
-
-def matches_btn():
-    print("matches (acá vas a meter la lógica después)")
-
-
-def matchups_btn():
-    print("matchups")
-
-
-def config_btn():
-    print("config")
-
-
-# =========================
-# MAIN GUI
+# MAIN GUI (LIMPIO)
 # =========================
 
 def main():
     app = QApplication(sys.argv)
 
-    window = MainWindow(matches_btn, matchups_btn, config_btn)
+    window = MainWindow()
     window.setFixedSize(1280, 720)
+
     window.show()
 
     sys.exit(app.exec())
